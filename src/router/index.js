@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Jobs from '../views/Jobs/Jobs.vue'
 import JobDetails from '../views/Jobs/JobDetails.vue'
+import NotFound from '../views/NotFound.vue'
 
 const routes = [
   {
@@ -23,7 +24,21 @@ const routes = [
   {
     path: '/jobs/:id',
     name: 'JobDetails',
-    component: JobDetails
+    component: JobDetails,
+		props: true
+  },
+	//redirect
+	{
+		path: '/all-jobs',
+		redirect: '/jobs',
+	},
+	//catchAll 404
+	//the catchall parameter reads all the routes the frontend tries to get
+	//the parentesis are for the regex that indicates the pattern to be catched
+	{
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound
   }
 ]
 
